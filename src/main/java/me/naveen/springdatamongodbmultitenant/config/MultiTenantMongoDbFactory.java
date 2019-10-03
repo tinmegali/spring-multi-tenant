@@ -24,6 +24,7 @@ public class MultiTenantMongoDbFactory extends SimpleMongoDbFactory {
     public DB getDb() throws DataAccessException {
 
         // Check the RequestContext
+        // The context was defined on HomeController
         Object tenant = RequestContextHolder.getRequestAttributes().getAttribute("tenantId", RequestAttributes.SCOPE_REQUEST);
 
         if (tenant instanceof String)

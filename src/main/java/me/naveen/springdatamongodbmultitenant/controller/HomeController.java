@@ -12,6 +12,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 /**
  * Created by Naveen Babu on 12-08-2016.
+ *
+ * Modified by Tin Megali on 02-09-2019
  */
 @RestController
 public class HomeController {
@@ -19,6 +21,12 @@ public class HomeController {
     @Autowired
     private PersonService personService;
 
+    /**
+     * Add a new context using 'db' param.
+     * A new database may be created if the context doesn't have a database yet.
+     * @see me.naveen.springdatamongodbmultitenant.config.MultiTenantMongoDbFactory
+     * @param db tenant context
+     */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public void index(@RequestParam(required = false) String db){
 
