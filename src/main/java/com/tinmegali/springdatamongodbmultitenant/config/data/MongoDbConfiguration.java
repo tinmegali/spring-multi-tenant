@@ -1,4 +1,4 @@
-package com.tinmegali.springdatamongodbmultitenant.config;
+package com.tinmegali.springdatamongodbmultitenant.config.data;
 
 import com.mongodb.MongoClientURI;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +9,11 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.net.UnknownHostException;
 
+/**
+ * MongoDB configuration.
+ * Uses MultiTenantMongoDbFactory, that fetches the appropriate tenant database.
+ * @see MultiTenantMongoDbFactory
+ */
 @Configuration
 public class MongoDbConfiguration {
 

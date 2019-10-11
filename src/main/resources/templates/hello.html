@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+<h1 th:text="'Hello ' + ${user} + '!'">Hello Default User!</h1>
+<h3 th:text="'tenant: ' + ${tenant}">tenant: default_tenant</h3>
+<br />
+<a th:href="@{/add-person}">Add Person</a>
+<br />
+<h4>Data</h4>
+<ul>
+    <li th:each="person : ${persons}">
+        <span th:text="${person.firstName}">First Name</span>
+    </li>
+</ul>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
