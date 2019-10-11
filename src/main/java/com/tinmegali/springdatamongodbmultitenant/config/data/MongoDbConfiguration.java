@@ -1,4 +1,4 @@
-package me.naveen.springdatamongodbmultitenant.config;
+package com.tinmegali.springdatamongodbmultitenant.config;
 
 import com.mongodb.MongoClientURI;
 import org.springframework.context.annotation.Bean;

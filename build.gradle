@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -11,9 +11,13 @@ repositories {
 
 dependencies {
 
-    compile("org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE")
-
-    compile 'org.springframework.data:spring-data-mongodb:1.9.4.RELEASE'
+    compile("org.springframework.boot:spring-boot-starter-web:2.0.8.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-security:2.0.8.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf:2.0.8.RELEASE")
+    // TODO update dependency 'spring-data-mongodb' to 2.2.0.
+    // It has a different logic on 'SimpleMongoDbFactory'.
+    // Hence, the class 'MultiTenantMongoDbFactory' will need to be updated as well.
+    compile 'org.springframework.data:spring-data-mongodb:2.0.8.RELEASE'
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

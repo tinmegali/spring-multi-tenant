@@ -1,4 +1,4 @@
-package me.naveen.springdatamongodbmultitenant;
+package com.tinmegali.springdatamongodbmultitenant;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

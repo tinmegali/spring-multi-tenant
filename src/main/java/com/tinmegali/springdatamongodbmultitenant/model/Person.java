@@ -1,11 +1,8 @@
-package me.naveen.springdatamongodbmultitenant.model;
+package com.tinmegali.springdatamongodbmultitenant.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- * Created by Naveen Babu on 12-08-2016.
- */
 @Document
 public class Person {
 

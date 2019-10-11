@@ -1,34 +1,30 @@
 # Database based Multi-Tenancy with Spring Data MongoDB
 Simple database based multi tenancy using spring data and mongoDB.
 
-The app creates/recovers databases based on parameters sent in the request.
+- The app creates/recovers databases on `user`'s `tenant` information.
+- If the `user` doesn't have a tenant, the app retrieve a default database, 
+that is shared between all users without tenant.
 
 # Running
-Build, run a docker mongodb image and make a get request to `http://localhost:8080/?db=db_name`.
-A new database using `db` parameter will be created and a document inserted on it.
+1. Run a docker mongodb image and build de project.
+2. Navigate to [home](http://localhost:8080/).
+3. Click on [greeting](http://localhost:8080/login).
+4. Log in with any of the users (listed below).
+5. You'll see a a *welcome* message with the `user.username` and a list of `person` related to this user tenant context.
+6. Click on *add person* to add new data.
+7. Logout and try another user and see how the data changes.
 
-# MultiTenantMongoDbFactory.java
-This is where the magic happens. We extend the SimpleMongoDbFactory provided by spring and override the getDb() method. That's all there is to it. How you do this may depend on where you are utilizing the same. As an example scenario i have implemented this in a Spring MVC app. RequestContextHolder is thread safe. 
+## Registered Users
+| USER | PASSWORD | TENANT  |
+| ---- | -------- | ------- |
+| `user` | `password` | `tenant1` |
+| `user1`| `password` | `tenant1` |
+| `user2`| `password` | `tenant2` |
+| `admin1`| `password` | *none*    |
+| `admin2`| `password` | *none*    |
 
-We inject the tenantId somewhere during the request life cycle and extract it in the getDb() method. I also have added a default Db.
-
-```
-    @Override
-    public DB getDb() throws DataAccessException {
-
-        // Check the RequestContext
-        Object tenant = RequestContextHolder.getRequestAttributes()
-                          .getAttribute("tenantId", RequestAttributes.SCOPE_REQUEST);
-
-        if (tenant instanceof String)
-        {
-            return getDb(tenant.toString());
-        }
-
-        // Return a default DB
-        return super.getDb(DEFAULT_DB);
-    }
-```
-
-## Acknowledges
-Based on project created by [Naveen Babu](https://github.com/naveenb92/spring-data-mongodb-multitenant).
+## Acknowledgment
+This project used a lot of references to be build.
+- [Database based Multi-Tenancy with Spring Data MongoDB](https://github.com/naveenb92/spring-data-mongodb-multitenant).
+- [Spring Security - Custom Authentication](https://dzone.com/articles/spring-security-custom)
+- [Multi-Tenancy Implementation for Spring Boot + Hibernate Projects](https://dzone.com/articles/spring-boot-hibernate-multitenancy-implementation)
