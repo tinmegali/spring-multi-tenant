@@ -5,6 +5,14 @@ Simple database based multi tenancy using spring data and mongoDB.
 - If the `user` doesn't have a tenant, the app retrieve a default database, 
 that is shared between all users without tenant.
 
+#### Important Note
+Most *spring multi-tenant* samples that I could find use the `ThreadLocalStorage` to save the `tenant` context. 
+This project however, has a different approach. It uses the user `Authentication` to save this information.
+
+ I can't say if this approach is best one out there, but it makes more sense 
+ to create a close tight relation between the `user` and its `tenant` context
+ thought `Authentication` object. If you disagree, please let me know.
+
 # Running
 1. Run a docker mongodb image and build de project.
 2. Navigate to [home](http://localhost:8080/).
@@ -24,7 +32,10 @@ that is shared between all users without tenant.
 | `admin2`| `password` | *none*    |
 
 ## Acknowledgment
-This project used a lot of references to be build.
+This project was initially based on [Database based Multi-Tenancy with Spring Data MongoDB](https://github.com/naveenb92/spring-data-mongodb-multitenant),
+however, it is so different from the original project, that shouldn't be considered a branch of it.
+
+These were the project's main references:
 - [Database based Multi-Tenancy with Spring Data MongoDB](https://github.com/naveenb92/spring-data-mongodb-multitenant).
 - [Spring Security - Custom Authentication](https://dzone.com/articles/spring-security-custom)
 - [Multi-Tenancy Implementation for Spring Boot + Hibernate Projects](https://dzone.com/articles/spring-boot-hibernate-multitenancy-implementation)
